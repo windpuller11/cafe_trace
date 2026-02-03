@@ -1,11 +1,21 @@
 from pathlib import Path
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from app.config import get_settings
 from app.api import plots, lots, events, files
 
 settings = get_settings()
 app = FastAPI(title="咖啡处理溯源与对账系统", version="0.1.0")
+
+# 小程序 / Web 跨域请求（部署到腾讯云后，小程序需在后台配置 request 合法域名）
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(plots.router)
 app.include_router(lots.router)

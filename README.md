@@ -224,12 +224,22 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 ---
 
+## 小程序对接（员工上传数据）
+
+后端部署到腾讯云后，员工可通过**微信小程序**录入事件（入厂/干燥/入库/出库）并上传照片。完整说明见：
+
+- **[docs/MINIPROGRAM.md](docs/MINIPROGRAM.md)** — 微信后台域名配置、API 清单、小程序请求示例、事件 data 速查、建议录入流程。
+
+---
+
 ## 项目结构（概要）
 
 ```
 coffee_trace/
 ├── ARCHITECTURE.md       # 系统架构与数据流、迁移策略
 ├── README.md
+├── docs/
+│   └── MINIPROGRAM.md   # 小程序对接说明（员工端上传）
 ├── docker-compose.yml   # postgres + backend
 └── backend/
     ├── Dockerfile
